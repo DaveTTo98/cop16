@@ -1,16 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
+
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mi escena de realidad aumentada</title>
   <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
-  <script src="https://raw.githubusercontent.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar-nft.js"></script>
 </head>
-<body>
-  <a-scene embedded arjs>
+
+<body style="margin: 0; overflow: hidden;">
+  <a-scene embedded arjs="sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
     <a-marker type="pattern" url="assets/pattern-marker.patt">
-      <a-entity gltf-model="assets/animacion.glb" scale="1 1 1"></a-entity>
+      <a-entity gltf-model="assets/animacion.glb" scale="0.5 0.5 0.5" position="0 0 0"></a-entity>
     </a-marker>
-<a-entity camera></a-entity>
+    <a-entity camera></a-entity>
   </a-scene>
 </body>
+
 </html>
