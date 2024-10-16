@@ -16,25 +16,14 @@
   <a-scene embedded arjs="sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
     <a-marker type="pattern" url="assets/pattern-minb.patt">
       <a-entity gltf-model="assets/esapAnimation.glb" scale="0.3 0.3 0.3" position="0 0.5 0" rotation="-120 0 0"
-        animation-mixer="clip: *;loop: repeat;" sound="src: url(assets/esapAudio.mp3); autoplay: true;  loop: true;">
-        <a-scene>
-          <a-assets>
-            <audio id="river" src="assets/esapAudio.mp3" preload="auto"></audio>
-          </a-assets>
+        animation-mixer="clip: *;loop: repeat;"
+        sound="src: url(assets/esapAudio.mp3); on: click; autoplay: true;  loop: true;">
 
-          <a-entity sound="src: #river"></a-entity>
-        </a-scene>
       </a-entity>
     </a-marker>
     <a-entity camera></a-entity>
   </a-scene>
 
-
-
-  <script>
-    var entity = document.querySelector('[sound]');
-    entity.components.sound.playSound();
-  </script>
 </body>
 
 
