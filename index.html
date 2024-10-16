@@ -30,13 +30,8 @@
 </body>
 
 <script>
-  document.getElementById('playButton').addEventListener('click', function() {
-    var soundEntity = document.querySelector('[sound]');
-    if (soundEntity && !soundEntity.components.sound.isPlaying) {
-      soundEntity.components.sound.playSound();
-      this.style.display = 'none'; // Esconder el botón después de hacer clic
-    }
-  });
+  var entidad = documento.querySelector( '[souond]' ); 
+  entidad.componentes.sound.playSound();
 </script>
 
 
