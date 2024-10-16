@@ -10,7 +10,10 @@
   <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.5.0/dist/aframe-extras.min.js"></script>
 </head>
 
-<body style="margin: 0; overflow: hidden;" ontouchstart="playSound()">
+<body style="margin: 0; overflow: hidden;">
+  <button id="playButton" style="position: absolute; z-index: 999; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+    Toca para activar el sonido
+  </button>
   <a-scene embedded arjs="sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
     <a-marker type="pattern" url="assets/pattern-Group.patt">
       <a-entity gltf-model="assets/esapAnimation.glb" scale="0.5 0.5 0.5" position="0 0 0" rotation="-110 0 0"
@@ -29,21 +32,12 @@
 
 
   <script>
-    function playSound() {
+    document.getElementById('playButton').addEventListener('click', function() {
       var soundEntity = document.querySelector('[sound]');
       if (soundEntity && !soundEntity.components.sound.isPlaying) {
         soundEntity.components.sound.playSound();
+        this.style.display = 'none'; // Esconder el botón después de hacer clic
       }
-    }
-    
-    // También puedes escuchar el evento de interacción en el marcador
-    document.querySelector('a-marker').addEventListener('click', function () {
-      playSound();
-    });
-
-    // Detectar el evento de toque en móviles
-    document.querySelector('a-marker').addEventListener('touchstart', function () {
-      playSound();
     });
   </script>
 </body>
