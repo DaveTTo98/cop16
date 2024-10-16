@@ -11,6 +11,9 @@
 </head>
 
 <body style="margin: 0; overflow: hidden;">
+  <button id="playButton" style="position: absolute; z-index: 999; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+    Toca para activar el sonido
+  </button>
   <a-scene embedded arjs="sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
     <a-marker type="pattern" url="assets/pattern-minb.patt">
       <a-assets>
@@ -24,23 +27,16 @@
     </a-marker>
     <a-entity camera></a-entity>
   </a-scene>
-
+  
   <script>
-    // Espera a que el botón sea presionado para iniciar la experiencia y reproducir el sonido
-    document.getElementById('startButton').addEventListener('click', function() {
-      var audioElement = document.getElementById('esapAudio');
+    document.getElementById('playButton').addEventListener('click', function() {
       var soundEntity = document.querySelector('[sound]');
-
-      // Reproduce el sonido
-      if (audioElement && soundEntity && !soundEntity.components.sound.isPlaying) {
+      if (soundEntity && !soundEntity.components.sound.isPlaying) {
         soundEntity.components.sound.playSound();
+        this.style.display = 'none'; // Esconder el botón después de hacer clic
       }
-
-      // Oculta el botón para que no interfiera
-      this.style.display = 'none';
     });
   </script>
-
 </body>
 
 
