@@ -14,11 +14,11 @@
   <a-scene embedded arjs="sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
     <a-marker type="pattern" url="assets/pattern-Group.patt">
       <a-entity gltf-model="assets/esapAnimation.glb" scale="0.5 0.5 0.5" position="0 0 0" rotation="0 0 0"
-        animation-mixer="clip: *;loop: repeat;"
-        sound="src:url(assets/esapAudio.mp3); autoplay: true;">
+        animation-mixer="clip: *;loop: repeat;">
       </a-entity>
     </a-marker>
     <a-entity camera></a-entity>
+    <a-sound src="src: url(assets/esapAudio.mp3)" autoplay="true"></a-sound>
   </a-scene>
 </body>
 
