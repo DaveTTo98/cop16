@@ -11,9 +11,6 @@
 </head>
 
 <body style="margin: 0; overflow: hidden;">
-  <button id="playButton" style="position: absolute; z-index: 999; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-    Toca para activar el sonido
-  </button>
   <a-scene embedded arjs="sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
     <a-marker type="pattern" url="assets/pattern-minb.patt">
       <a-assets>
@@ -28,15 +25,7 @@
     <a-entity camera></a-entity>
   </a-scene>
   
-  <script>
-    document.getElementById('playButton').addEventListener('click', function() {
-      var soundEntity = document.querySelector('[sound]');
-      if (soundEntity && !soundEntity.components.sound.isPlaying) {
-        soundEntity.components.sound.playSound();
-        this.style.display = 'none'; // Esconder el botón después de hacer clic
-      }
-    });
-  </script>
+
 </body>
 
 
