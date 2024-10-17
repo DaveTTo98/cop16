@@ -11,6 +11,10 @@
 </head>
 
 <body style="margin: 0; overflow: hidden;">
+  <audio id="audio" loop>
+    <source src="assets/esapAudio.mp3" type="audio/mp3">
+    Tu navegador no soporta el elemento de audio.
+</audio>
   <a-scene embedded arjs="sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
     <a-marker type="pattern" url="assets/pattern-esapActive.patt">
       <a-entity gltf-model="assets/esapAnimation.glb" scale="0.3 0.3 0.3" position="0 0.5 0" rotation="-120 0 0"
@@ -20,5 +24,17 @@
     </a-marker>
     <a-entity camera></a-entity>
   </a-scene>
+
+
+
+  <script>
+    // Ejecuta el audio cuando la página esté completamente cargada
+    window.addEventListener('load', function () {
+        var audio = document.getElementById('audio');
+        audio.play();
+    });
+</script>
+
+  
 </body>
 </html>
