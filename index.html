@@ -26,14 +26,22 @@
   </a-scene>
 
 
-
   <script>
-    // Ejecuta el audio cuando la página esté completamente cargada
-    window.addEventListener('load', function () {
-        var audio = document.getElementById('audio');
-        audio.play();
-    });
-</script>
+    var audio = document.getElementById('audio');
+
+    // Función que inicia la reproducción de audio
+    function startAudio() {
+      audio.play();
+      // Remover los listeners después de la primera interacción
+      document.removeEventListener('click', startAudio);
+      document.removeEventListener('touchstart', startAudio);
+    }
+
+    // Esperar a la interacción del usuario: clic o toque en la pantalla
+    document.addEventListener('click', startAudio);
+    document.addEventListener('touchstart', startAudio);
+  </script>
+  
 
   
 </body>
