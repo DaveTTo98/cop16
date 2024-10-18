@@ -29,15 +29,11 @@
   <script>
     var audio = document.getElementById('audio');
 
-    // Función que inicia la reproducción de audio
     function startAudio() {
       audio.play();
-      // Remover los listeners después de la primera interacción
       document.removeEventListener('click', startAudio);
       document.removeEventListener('touchstart', startAudio);
     }
-
-    // Esperar a la interacción del usuario: clic o toque en la pantalla
     document.addEventListener('click', startAudio);
     document.addEventListener('touchstart', startAudio);
   </script>
