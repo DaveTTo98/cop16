@@ -14,17 +14,23 @@
   <audio id="audio" loop>
     <source src="assets/esapAudio.mp3" type="audio/mp3">
     Tu navegador no soporta el elemento de audio.
-</audio>
+  </audio>
+
+  <!-- Mensaje de solicitud de acceso -->
+  <div id="access-message" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border: 1px solid black; display: none;">
+    Este sitio web inmersivo requiere acceso a los sensores de movimiento de tu dispositivo.
+    <br><br>
+    <button id="allow-button">Permitir</button>
+    <button id="deny-button">Denegar</button>
+  </div>
+
   <a-scene embedded arjs="sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
     <a-marker type="pattern" url="assets/pattern-esapActive.patt">
       <a-entity gltf-model="assets/esapAnimation.glb" scale="0.3 0.3 0.3" position="0 0.5 0" rotation="-120 0 0"
-        animation-mixer="clip: *;loop: repeat;"
-        
-      </a-entity>
+        animation-mixer="clip: *;loop: repeat;"></a-entity>
     </a-marker>
     <a-entity camera></a-entity>
   </a-scene>
-
 
   <script>
     var audio = document.getElementById('audio');
@@ -36,9 +42,33 @@
     }
     document.addEventListener('click', startAudio);
     document.addEventListener('touchstart', startAudio);
-  </script>
-  
 
-  
+    // Mostrar mensaje de acceso
+    document.getElementById('access-message').style.display = 'block';
+
+    // Manejar la solicitud de permisos
+    document.getElementById('allow-button').addEventListener('click', function() {
+      document.getElementById('access-message').style.display = 'none';
+      // Aquí puedes agregar la lógica para acceder a los sensores de movimiento
+      // Ejemplo:
+      if (typeof DeviceMotionEvent.requestPermission === 'function') {
+        DeviceMotionEvent.requestPermission()
+          .then(function(response) {
+            if (response == 'granted') {
+              console.log('Permisos de movimiento concedidos');
+            }
+          })
+          .catch(function(error) {
+            console.error('Error al solicitar permisos:', error);
+          });
+      }
+    });
+
+    document.getElementById('deny-button').addEventListener('click', function() {
+      document.getElementById('access-message').style.display = 'none';
+      console.log('Permisos de movimiento denegados');
+    });
+  </script>
+
 </body>
 </html>
