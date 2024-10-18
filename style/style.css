@@ -32,7 +32,7 @@
         gap: 20px;
     }
     #allow-button{
-        border: none;
+        
         background-color: #144A8A;
         color: white;
         border-radius: 25px;
@@ -40,7 +40,7 @@
         padding: 10px;
     }
     #deny-button{
-        border: none;
+        
         background-color: #144A8A;
         color: white;
         border-radius: 25px;
