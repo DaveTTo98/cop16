@@ -5,10 +5,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Paz y naturaleza</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> <!-- Importar la fuente Roboto -->
   <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.5.0/dist/aframe-extras.min.js"></script>
   <style>
+    body {
+      font-family: 'Roboto', sans-serif; /* Aplicar la fuente Roboto */
+    }
+
     /* Estilos para el logo */
     #logo {
       position: fixed;
@@ -40,7 +45,7 @@
   </audio>
 
   <!-- Logo -->
-  <img id="logo" src="assets/logo.png" alt="Logo" width="200"> <!-- Cambia la ruta y el tamaño según sea necesario -->
+  <img id="logo" src="assets/esap-cop.png" alt="Logo" width="200"> <!-- Cambia la ruta y el tamaño según sea necesario -->
 
   <!-- Mensaje de solicitud de acceso -->
   <div id="access-message">
@@ -75,6 +80,7 @@
     // Manejar la solicitud de permisos
     document.getElementById('allow-button').addEventListener('click', function() {
       document.getElementById('access-message').style.display = 'none'; // Ocultar el mensaje
+      document.getElementById('logo').style.display = 'none'; // Ocultar el logo
       if (typeof DeviceMotionEvent.requestPermission === 'function') {
         DeviceMotionEvent.requestPermission()
           .then(function(response) {
@@ -92,6 +98,7 @@
 
     document.getElementById('deny-button').addEventListener('click', function() {
       document.getElementById('access-message').style.display = 'none'; // También oculta el mensaje al denegar
+      document.getElementById('logo').style.display = 'none'; // Ocultar el logo al denegar
       console.log('Permisos de movimiento denegados');
     });
   </script>
